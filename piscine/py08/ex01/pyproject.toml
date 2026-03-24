@@ -1,0 +1,9 @@
+[tool.poetry]
+package-mode = false  # this is a script project, not Python library to be published
+
+[tool.poetry.dependencies]
+python = "^3.10" # ^compatible version: >=3.10, <4.0
+pandas = "*"
+numpy = "*"
+matplotlib = "*"
+requests = "*"

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, List
 
 
 class DataProcessor(ABC):
@@ -16,7 +16,7 @@ class DataProcessor(ABC):
 
 
 class NumericProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         # 这里创建了自己的 __init__
         self.processed_count = 0  # 添加子类特有的属性
         # 因为没有调用 super().__init__()
@@ -55,7 +55,7 @@ class NumericProcessor(DataProcessor):
 
 
 class TextProcessor(DataProcessor):
-    def __init__(self):
+    def __init__(self) -> None:
         self.processed_chars = 0
 
     def validate(self, data: Any) -> bool:
@@ -89,7 +89,7 @@ class LogProcessor(DataProcessor):
         "DEBUG": "[DEBUG]"
     }
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.error_count = 0
 
     def validate(self, data: Any) -> bool:
@@ -164,7 +164,8 @@ def main() -> None:
     print("=== Polymorphic Processing Demo ===\n")
     print("Processing multiple data types through same interface...")
 
-    processors = [NumericProcessor(), TextProcessor(), LogProcessor()]
+    processors = List[DataProcessor] = [NumericProcessor(), TextProcessor(),
+                                        LogProcessor()]
     datas = [[1, 2, 3], "Hello Nexus", "INFO: System ready"]
 
     for i in range(3):
